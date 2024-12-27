@@ -1,0 +1,41 @@
+procedure cariDataPenduduk(dataDesa: tabDesa, nDesa, nPenduduk: integer)
+Kamus
+    found: boolean
+    matchNama, matchNIK: boolean
+    i, j, opsi: integer
+
+Algoritma
+    found <- false
+    i <- 0
+    j <- 0
+    opsi <- 0
+    matchNama <- false
+    matchNIK <- false
+    for i < nDesa do
+        for j < nPenduduk do        
+            data <- dataDesa[i].dataPenduduk[j]
+            input(opsi)
+            if opsi == 1 then
+                input(cariNama)
+            else if opsi == 2 then
+                input(cariNIK)
+            endif
+
+            if data.namaPenduduk == cariNama then
+                matchNama <- true
+            else if data.nikPenduduk == cariNIK then
+                matchNIK <- true
+            endif
+
+            if matchNama == true || matchNIK == true then
+                output(data)
+                found <- true
+            endif
+            j <- j + 1
+        endfor
+        if not found then
+            output("Data tidak ditemukan!")
+        endif
+        i <- i + 1
+    endfor
+endprocedure
